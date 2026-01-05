@@ -1,0 +1,158 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-user-graduate"></i>
+                    Student Registration System
+                </h1>
+                <p class="description">
+                    Register, manage, and track student details with ease. 
+                    This system allows you to add, edit, and delete student records.
+                </p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Registration Form -->
+            <section class="form-section card fade-in">
+                <h2><i class="fas fa-user-plus"></i> Student Registration Form</h2>
+                <form id="registrationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentName"><i class="fas fa-user"></i> Student Name</label>
+                            <input type="text" id="studentName" placeholder="Enter student name">
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentId"><i class="fas fa-id-card"></i> Student ID</label>
+                            <input type="text" id="studentId" placeholder="Enter student ID">
+                            <div class="error-message" id="idError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email ID</label>
+                            <input type="email" id="email" placeholder="Enter email address">
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact"><i class="fas fa-phone"></i> Contact Number</label>
+                            <input type="text" id="contact" placeholder="Enter contact number">
+                            <div class="error-message" id="contactError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="class"><i class="fas fa-chalkboard-teacher"></i> Class</label>
+                        <input type="text" id="class" placeholder="Enter class (e.g., 10th Grade)">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address"><i class="fas fa-home"></i> Address</label>
+                        <textarea id="address" rows="3" placeholder="Enter student address"></textarea>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" id="submitBtn" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Register Student
+                        </button>
+                        <button type="button" id="updateBtn" class="btn btn-secondary" style="display: none;">
+                            <i class="fas fa-edit"></i> Update Record
+                        </button>
+                        <button type="reset" class="btn btn-outline">
+                            <i class="fas fa-redo"></i> Clear Form
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Display Section -->
+            <section class="display-section card slide-up">
+                <div class="section-header">
+                    <h2><i class="fas fa-list-alt"></i> Registered Students</h2>
+                    <div class="record-count">
+                        <span id="recordCount">0</span> Students Registered
+                    </div>
+                </div>
+                
+                <div class="table-container" id="tableContainer">
+                    <table id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Student ID</th>
+                                <th>Email ID</th>
+                                <th>Contact No</th>
+                                <th>Class</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Records will be inserted here by JavaScript -->
+                            <tr id="noRecordsRow">
+                                <td colspan="7" class="empty-message">
+                                    <i class="fas fa-info-circle"></i> No student records found. Register a student to see records here.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-footer">
+                    <div class="scroll-indicator" id="scrollIndicator">
+                        <i class="fas fa-chevron-down"></i> Scroll to see more records
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Student Registration System &copy; <span id="currentYear"></span> | All Rights Reserved</p>
+            <p class="assignment-info">Assignment: JavaScript DOM Manipulation</p>
+        </footer>
+    </div>
+
+    <!-- Confirmation Modal for Delete -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> Confirm Deletion</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this student record? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelDelete">Cancel</button>
+                <button class="btn btn-danger" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div class="notification" id="successNotification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="notificationMessage">Record added successfully!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
